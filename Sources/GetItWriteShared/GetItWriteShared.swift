@@ -5,7 +5,7 @@ import Foundation
 
 public class GetItWriteShared {
     
-    private static func isDayLit(offset: Int, streakCount: Int, lastActivityTimestamp: Double) -> Bool {
+    public static func isDayLit(offset: Int, streakCount: Int, lastActivityTimestamp: Double) -> Bool {
         let calendar = Calendar.current
         let endDate = calendar.startOfDay(for: Date.init(timeIntervalSince1970: lastActivityTimestamp))
         let startDate = calendar.date(byAdding: .day, value: (streakCount * -1), to: endDate)!
