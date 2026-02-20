@@ -5,7 +5,7 @@ import Foundation
 
 public class GetItWriteShared {
     
-    public func updateStreak(lastDate: Date?, currentDate: Date = Date(), streak: Int) -> (Int, Date) {
+    public static func updateStreak(lastDate: Date?, currentDate: Date = Date(), streak: Int) -> (Int, Date) {
         var calendar = Calendar(identifier: .gregorian)
         calendar.timeZone = .current
         
