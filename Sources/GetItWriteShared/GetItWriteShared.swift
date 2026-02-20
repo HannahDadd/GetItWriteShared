@@ -5,6 +5,20 @@ import Foundation
 
 public class GetItWriteShared {
     
+    private static func isDayLit(offset: Int, streakCount: Int, lastActivityTimestamp: Double) -> Bool {
+        let calendar = Calendar.current
+        let endDate = calendar.startOfDay(for: Date.init(timeIntervalSince1970: lastActivityTimestamp))
+        let startDate = calendar.date(byAdding: .day, value: (streakCount * -1), to: endDate)!
+        let today = calendar.startOfDay(for: Date())
+        let weekStart = calendar.dateInterval(of: .weekOfYear, for: today)!.start
+        
+        let day = calendar.date(byAdding: .day, value: offset, to: weekStart)!
+        
+        let isCompleted = day >= startDate && day <= endDate
+        
+        return isCompleted
+    }
+    
     public static func updateStreak(lastDate: Date?, currentDate: Date = Date(), streak: Int) -> (Int, Date) {
         var calendar = Calendar(identifier: .gregorian)
         calendar.timeZone = .current
